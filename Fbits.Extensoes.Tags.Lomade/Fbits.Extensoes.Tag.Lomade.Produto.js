@@ -1,6 +1,6 @@
-		Fbits = Fbits || [];
-        Fbits.Extensoes = Fbits.Extensoes || [];
-        Fbits.Extensoes.Tags = Fbits.Extensoes.Tags || [];
+	var Fbits = Fbits || {};
+        Fbits.Extensoes = Fbits.Extensoes || {};
+        Fbits.Extensoes.Tags = Fbits.Extensoes.Tags || {};
 
         //
         // Recebe ID do Parceiro GoogleParams
