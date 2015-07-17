@@ -1,4 +1,4 @@
-1-Ter acessar ao gerenciador de scripts do Admin Fstore
+1-Ter acessar ao gerenciador de scripts do Admin Fstore<br/>
 2-Adicionar nova TAG, com o  nome "Fbits.Tag.Actionpay" 
 3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
 4-Deixar ativo e prioridade 1
