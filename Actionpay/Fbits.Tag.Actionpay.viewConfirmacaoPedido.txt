@@ -1,0 +1,60 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.Actionpay.viewConfirmacaoPedido" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 1
+5-Posição deixar como "Body - Última linha"
+6-Página colocar "Todos". 
+7-E no Identificador colocar "*ConfirmacaoPedido*"
+8-No campo conteúdo do script adicionar o script abaixo.
+9-trocar PARTNER_ID pelo fornecdido pelo parceiro
+10-verificar variáveis e dados corretos com o parceiro.
+
+<script type="text/javascript">
+    var parceiroAtivo = Fbits.Cookie.Get('ParceiroAtivo');
+    if (parceiroAtivo == 'Actionpay') {
+
+        var aprtx_product_id = '';
+        var aprtx_product_Nome = '';
+        var aprtx_product_Price = '';
+        var aprtx_product_Qtde = '';
+
+        var str_item = '';
+        var str_basket_list = '';
+
+        var myArrayProdutos = Fbits.Pedido.Produtos;
+        for (var i = 0, tot = myArrayProdutos.length; i < tot; i++) {
+            aprtx_product_id = Fbits.Pedido.Produtos[i].ProdutoId; // Retornar o ID do produto
+            aprtx_product_Nome = Fbits.Pedido.Produtos[i].Nome; // Retornar o Nome do produto
+            aprtx_product_Price = Fbits.Pedido.Produtos[i].Valor; // Retornar o preço do produto
+            aprtx_product_Qtde = Fbits.Pedido.Produtos[i].Quantidade; // Retornar o Quantidade do produto    		  
+
+            str_item = "id:" + aprtx_product_id + ",name:" + aprtx_product_Nome + ",price:" + aprtx_product_Price + ",quantity:" + aprtx_product_Qtde;
+            str_basket_list += "{" + str_item + "},";
+        }
+
+        var str_action_id = Fbits.Pedido.PedidoId;
+        var str_action_price = Fbits.Pedido.Total - Fbits.Pedido.Frete;
+        var str_basket = "pageType:6,purchasedProducts:[" + str_basket_list + "]";
+
+        /*<![CDATA[*/
+        // Página Basket
+        window.APRT_DATA = '@str_basket';
+        /*]]>*/
+
+        var cookieorigem = parceiroAtivo;
+        var cookieactionpay = Fbits.Cookie.Get('Actionpay');
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1);
+                if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+            }
+            return "";
+        }
+        if (cookieorigem == "Actionpay") {
+            document.write("<img src=//n.actionpay.ru/ok/6587.png?actionpay=" + cookieactionpay + "&apid='" + str_action_id + "'&price=" + str_action_price + " height=1 width=1 />");
+        }
+    }
+</script>	    

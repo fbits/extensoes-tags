@@ -1,1 +1,0 @@
-=== Documentação para Implementação da TAG [Lomade]
