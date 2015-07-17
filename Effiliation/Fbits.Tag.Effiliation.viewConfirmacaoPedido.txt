@@ -1,0 +1,37 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.Effiliation.viewConfirmacaoPedido" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 2
+5-Posição deixar como "Body - Última linha"
+6-Página colocar "Todos" ou conforme o tamplate da loja. 
+7-E no Identificador colocar "*ConfirmacaoPedido*"
+8-No campo conteúdo do script adicionar o script abaixo.
+9-ver parametros especificos fornecidos pela veinteractive
+
+<script type="text/javascript">
+	var myArrayProdutos = Fbits.Carrinho.Produtos;
+	var vProdutosIds = '';  
+	for (var i = 0, tot = myArrayProdutos.length; i < tot; i++) {
+	if (i > 0 && myArrayProdutos.Count > 1) {
+		vProdutosIds += ",";     
+	}
+		vProdutosIds += Fbits.Carrinho.Produtos[i].ProdutoId;    
+	} 
+
+	var _url = new Fbits.Framework.UrlUtils.Builder('https://vu.adschoom.com/trafic/retar.php?type=TRANSACTION&boutique=Anita&valid=1');
+	_url.set('transaction_id', Fbits.Pedido.PedidoID);   	
+	_url.set('transaction_amount', Fbits.Carrinho.Total);   	
+	_url.set('data', vProdutosIds);   	
+
+	(function () {
+		var _scr = document.createElement('script');
+		_scr.async = true;
+		_scr.src = (document.location.protocol === 'https:' ? 'https:' : 'http:')
+		  + _url.build();
+		var x = document.getElementsByTagName('script')[0];
+		
+	x.parentNode.insertBefore(_src, x);
+	}());					
+</script>
+
+

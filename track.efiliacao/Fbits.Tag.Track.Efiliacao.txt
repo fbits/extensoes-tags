@@ -1,0 +1,21 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.Track.Efiliacao" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 6
+5-Posição deixar como "Body - Ultima linha"
+6-Página colocar "Todas". 
+7-E no Identificador colocar "*ConfirmacaoPedido*"
+8-No campo conteúdo do script adicionar o script abaixo.
+9-verificar dados com o parceiro
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var vSubTotal = Fbits.Pedido.Total - Fbits.Pedido.Frete;
+        var vPedidoId = Fbits.Pedido.PedidoId;
+        
+        var img = document.createElement("img");
+        img.style.display = "inline";
+        img.src = 'https://track.efiliacao.com.br/servlet/effi.revenue?id=660008494&montant=' + vSubTotal + '&monnaie=brl&ref=' + vPedidoId;
+    });
+</script>

@@ -1,0 +1,15 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.eRA" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 10
+5-Posição deixar como "Body - Última linha"
+6-Página colocar "Todos"
+7-E no Identificador colocar "*"
+8-No campo conteúdo do script adicionar o script abaixo.
+9-Verificar dados com o parceiro
+
+
+    <!-- Inicio TAG eRA-->
+    <script src="HTTPS://PAINEL.ERA-BR.COM/WS/CAPTURA/JS/TAG.JS?1050"
+        id="ERACHECKOUT_JS" data-api-client-key="1050"></script>
+    <!-- Final TAG eRA -->	

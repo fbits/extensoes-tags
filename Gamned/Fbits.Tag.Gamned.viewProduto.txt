@@ -1,0 +1,25 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.Gamned.viewProduto" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 2
+5-Posição deixar como "Footer - Primeira linha"
+6-Página colocar "Home 2". E no Identificador colocar "*Produto*"
+7-No campo conteúdo do script adicionar o script abaixo.
+8-Substituir OFK com o codigo informado pelo parceiro
+
+<script type="text/javascript">
+	(function () {
+		function async_load() {
+			var s = document.createElement('script');
+			s.type = 'text/javascript';
+			s.async = true;
+			s.src = 'http://trk.adbutter.net\/target?ofk=OFK&pid=Fbits.Produto.ProdutoId';
+			var x = document.getElementsByTagName('script')[0];
+			x.parentNode.insertBefore(s, x);
+		}
+		if (window.attachEvent)
+			window.attachEvent('onload', async_load);
+		else
+			window.addEventListener('load', async_load, false);
+	})();
+</script>

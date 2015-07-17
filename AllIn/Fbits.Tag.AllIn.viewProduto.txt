@@ -1,0 +1,53 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.AllIn.viewProduto" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 10
+5-Posição deixar como "Body - Última linha"
+6-Página colocar "Produto". 
+7-E no Identificador colocar "/"
+8-No campo conteúdo do script adicionar o script abaixo.
+
+
+<script type="text/javascript">
+    try {
+        //Busca categoria e subcategoria
+        var vCategoria = 99999999;
+        var vSubCategoria = 0;
+        var myArrayCategorias = Fbits.Pedido.Produtos;
+        for (var x = 0, cat = myArrayCategorias.length; x < cat; x++) {
+            if (vCategoria > Fbits.Produto.Categorias[x].CategoriaId) {
+                vCategoria = Fbits.Produto.Categorias[x].CategoriaId;
+            }
+            if (vSubCategoria < Fbits.Produto.Categorias[x].CategoriaId) {
+                vSubCategoria = Fbits.Produto.Categorias[x].CategoriaId;
+            }
+        }
+
+        console.log("Allin.SetaPagina()");
+        bs.setaPagina({
+            "nome": "" + Fbits.Usuario.Nome + "",
+            "categoria": "" + vCategoria + "",
+            "categoria_sub": "" + vSubCategoria + "",
+            "id_produto": "" + Fbits.Produto.ProdutoId + "",
+            "valor": "" + Fbits.Pedido.Total + "",
+            "marca": "" + Fbits.Produto.Marca + ""
+        });
+    } catch (e) {
+    }
+</script>
+<script type="text/javascript">
+    try {
+        var qtd = $("#txtQuantidade-@itemId").val();
+        console.log("Allin.addProdutoCarrinho(" + qtd + ")");
+        bs.addProdutoCarrinho({
+            "id_produto": "" + Fbits.Produto.ProdutoId + "",/*Id Produto, OBRIGATÓRIO*/
+            "nome_produto": "" + Fbits.Produto.Nome + "",/*Nome Produto, OBRIGATÓRIO*/
+            "valor_unitario": "" + Fbits.Produto.PrecoPor + "",/*Valor do produto, OBRIGATÓRIO*/
+            "quantidade": qtd,/*Quantidade do produto, NÃO OBRIGATÓRIO */
+            "categoria": "",/*Categoria, OBRIGATÓRIO*/ //(PROVAVELMENTE EU TENHO QUE FAZER UM LYNC pra pegar a categoria)
+            "categoria_sub": ""/*SubCategoria do Produto, OBRIGATÓRIO *///(e outro para pegar a subcategoria)
+        });
+    } catch (e) {
+        //erros
+    }
+</script>

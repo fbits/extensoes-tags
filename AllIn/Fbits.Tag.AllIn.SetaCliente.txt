@@ -1,0 +1,20 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.AllIn.SetaCliente" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 10
+5-Posição deixar como "Header - Última linha"
+6-Página colocar "Todos" ou conforme o tamplate da loja. 
+7-E no Identificador colocar "*"
+8-No campo conteúdo do script adicionar o script abaixo.
+
+
+
+<script type="text/javascript">
+    try {
+        console.log("Allin.SetaCliente()");
+        bs.setaCliente({
+            "email": "" + Fbits.Usuario.Email + ""
+        });
+    } catch (e) {
+    }
+</script>

@@ -1,0 +1,37 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.GoogleAdwordsPedidoFechado.viewConfirmacaoPedido" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 11
+5-Posição deixar como "Body - Ultima linha"
+6-Página colocar "Todas". 
+7-E no Identificador colocar "*ConfirmacaoPedido*"
+8-No campo conteúdo do script adicionar o script abaixo.
+9-Verificar os parametros com o parceiro
+
+
+<!-- Google Code for PEDIDO FECHADO - ANITA Conversion Page -->
+<script type="text/javascript">
+    vTotal = Fbits.Pedido.Total - Fbits.Pedido.Frete;
+
+    /* <![CDATA[ */
+    var google_conversion_id = 1047517255;
+    var google_conversion_language = "pt";
+    var google_conversion_format = "2";
+    var google_conversion_color = "ffffff";
+    var google_conversion_label = "US39CO2mvwUQx7C_8wM";
+    var google_conversion_value = vTotal;
+    /* ]]> */
+
+    var vDomain = 'https://www.googleadservices.com/pagead/conversion/1047517255/?value=' + vTotal + '&amp;label=US39CO2mvwUQx7C_8wM&amp;guid=ON&amp;script=0'; = 'https://www.googleadservices.com/pagead/conversion/1047517255/?value=' + vTotal + '&amp;label=US39CO2mvwUQx7C_8wM&amp;guid=ON&amp;script=0';
+    var _url = new Fbits.Framework.UrlUtils.Builder(vDomain);
+    //_url.set('value', value);    
+    (function () {
+        var s = document.createElement('script');
+        var x = document.getElementsByTagName('script')[0];
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = _url.build();
+        x.parentNode.insertBefore(s, x);
+    })();
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>

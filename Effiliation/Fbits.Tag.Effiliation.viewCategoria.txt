@@ -1,0 +1,24 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.Effiliation.viewCategoria" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 2
+5-Posição deixar como "Body - Última linha"
+6-Página colocar "Categoria" ou conforme o tamplate da loja. 
+7-E no Identificador colocar "*"
+8-No campo conteúdo do script adicionar o script abaixo.
+9-ver parametros especificos fornecidos pela veinteractive
+
+<script type="text/javascript">
+	var _url = new Fbits.Framework.UrlUtils.Builder('http://vu.adschoom.com/trafic/retar.php?type=CATEGORIE&boutique=Anita');
+	_url.set('categorie_id', Fbits.Produto.Categorias);    
+
+	(function () {
+		var _scr = document.createElement('script');
+		_scr.async = true;
+		_scr.src = (document.location.protocol === 'https:' ? 'https:' : 'http:')
+		  + _url.build();
+		var x = document.getElementsByTagName('script')[0];
+		
+	x.parentNode.insertBefore(_src, x);
+	}());
+</script>

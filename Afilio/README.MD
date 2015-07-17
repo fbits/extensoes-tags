@@ -1,3 +1,3 @@
-Voce deve ter acessar ao gerenciador de scripts do Admin Fstore<br/>
+Você deve ter acessar ao gerenciador de scripts do Admin Fstore<br/>
 Entrar em Gestor de scripts<br/>
-Adicionar um nov Script<br/>
+Adicionar um novo Script<br/>
