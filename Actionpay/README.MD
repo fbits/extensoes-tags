@@ -1,10 +1,10 @@
 1-Ter acessar ao gerenciador de scripts do Admin Fstore<br/>
-2-Adicionar nova TAG, com o  nome "Fbits.Tag.Actionpay" 
-3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
-4-Deixar ativo e prioridade 1
-5-Posição deixar como "Body - Última linha"
-6-Página colocar todas. E no Identificador colocar "*ConfirmacaoPedido*"
-7-No campo conteúdo do script adicionar o script abaixo.
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.Actionpay"<br/>
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco.<br/>
+4-Deixar ativo e prioridade 1<br/>
+5-Posição deixar como "Body - Última linha"<br/>
+6-Página colocar todas. E no Identificador colocar "*ConfirmacaoPedido*"<br/>
+7-No campo conteúdo do script adicionar o script abaixo.<br/>
 
 
 <script id="xcntmyAsync" type="text/javascript">
