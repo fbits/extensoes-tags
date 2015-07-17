@@ -1,0 +1,145 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.Afilio.vewConfirmacaoPedido" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 3
+5-Posição deixar como "Body - Última linha"
+6-Página colocar todas. E no Identificador colocar "*ConfirmacaoPedido*"
+7-No campo conteúdo do script adicionar o script abaixo.
+
+
+<script type="text/javascript">
+    var parceiroAtivo = Fbits.Cookie.Get('ParceiroAtivo');
+    if (parceiroAtivo == 'Afilio') {
+        $(document).ready(function () {            
+            var vPedidoId = Fbits.Pedido.PedidoId;            
+            var vValorTotal = Fbits.Pedido.Total;
+            var vValorFrete = Fbits.Pedido.Frete;
+            var vValorDebitoCC = '0';
+            var vRemid = ''; 
+            var vCategoriaTotal = 0;
+            var vDiff_Afilio = 0;
+            var vPrecoVenda = 0;
+            var vQuantidade = 0;
+            var myArrayProdutos = Fbits.Pedido.Produtos;            
+            for (var i = 0, tot = myArrayProdutos.length; i < tot; i++) {                
+                vPrecoVenda = vPrecoVenda + Fbits.Pedido.Produtos[i].Valor;    
+                vQuantidade = vQuantidade + Fbits.Pedido.Produtos[i].Quantidade;
+
+                ////Busca a menor categoria do produto
+                //var vCategoriaId = 99999999;
+                //var myArrayCategorias = Fbits.Pedido.Produtos[i].CategoriasPaiID;
+                //for (var x = 0, cat = myArrayCategorias.length; x < cat; x++) {
+                //    if (vCategoriaId > Fbits.Produto.Categorias[x].CategoriaId) {
+                //        vCategoriaId = Fbits.Produto.Categorias[x].CategoriaId;
+                //    }
+                //}
+            } 
+
+            vDiff_Afilio = vPrecoVenda * vQuantidade;
+            vDiff_Afilio = 100 - ((vValorTotal - vValorFrete + vValorDebitoCC) * 100) / vDiff_Afilio;
+            vValorTotal = vValorTotal - (vPrecoVenda * vDiff_Afilio / 100);
+            
+            switch (vCategoriaId) {
+                case 896:
+                    vRemid = '3c02a379965ab0dfcd77b1c484450433';
+                    break;
+                case 1002:
+                    vRemid = '6d5a2b27b31911c32c62e93f1e52cf42';
+                    break;
+                case 1000:
+                    vRemid = '251bd8143891238ecedc306508e29017';
+                    break;
+                case 869:
+                    vRemid = '53185c99a2f37245882b25b048af5e75';
+                    break;
+                case 870:
+                    vRemid = '59f2d6c18f6caa02781c0faff4f3fa4e';
+                    break;
+                case 1088:
+                    vRemid = '8cb9812149cd8579301ce2ca5057eff0';
+                    break;
+                case 1001:
+                    vRemid = '44606877da0120175b276fef46d53098';
+                    break;
+                case 1356:
+                    vRemid = '0567d71e18493993a98dd6c4b0ad5154';
+                    break;
+            }
+
+<script type="text/javascript">
+    var parceiroAtivo = Fbits.Cookie.Get('ParceiroAtivo');
+    if (parceiroAtivo == 'Afilio') {
+        $(document).ready(function () {
+            var vPedidoId = Fbits.Pedido.PedidoId;
+            var vValorTotal = Fbits.Pedido.Total;
+            var vValorFrete = Fbits.Pedido.Frete;
+            var vValorDebitoCC = '0';
+            var vRemid = '';
+            var vCategoriaTotal = 0;
+            var vDiff_Afilio = 0;
+            var vPrecoVenda = 0;
+            var vQuantidade = 0;
+            var myArrayProdutos = Fbits.Pedido.Produtos;
+            for (var i = 0, tot = myArrayProdutos.length; i < tot; i++) {
+                vPrecoVenda = vPrecoVenda + Fbits.Pedido.Produtos[i].Valor;
+                vQuantidade = vQuantidade + Fbits.Pedido.Produtos[i].Quantidade;
+
+                ////Busca a menor categoria do produto
+                //var vCategoriaId = 99999999;
+                //var myArrayCategorias = Fbits.Pedido.Produtos[i].CategoriasPaiID;
+                //for (var x = 0, cat = myArrayCategorias.length; x < cat; x++) {
+                //    if (vCategoriaId > Fbits.Produto.Categorias[x].CategoriaId) {
+                //        vCategoriaId = Fbits.Produto.Categorias[x].CategoriaId;
+                //    }
+                //}
+            }
+
+            vDiff_Afilio = vPrecoVenda * vQuantidade;
+            vDiff_Afilio = 100 - ((vValorTotal - vValorFrete + vValorDebitoCC) * 100) / vDiff_Afilio;
+            vValorTotal = vValorTotal - (vPrecoVenda * vDiff_Afilio / 100);
+
+            switch (vCategoriaId) {
+                case 896:
+                    vRemid = '3c02a379965ab0dfcd77b1c484450433';
+                    break;
+                case 1002:
+                    vRemid = '6d5a2b27b31911c32c62e93f1e52cf42';
+                    break;
+                case 1000:
+                    vRemid = '251bd8143891238ecedc306508e29017';
+                    break;
+                case 869:
+                    vRemid = '53185c99a2f37245882b25b048af5e75';
+                    break;
+                case 870:
+                    vRemid = '59f2d6c18f6caa02781c0faff4f3fa4e';
+                    break;
+                case 1088:
+                    vRemid = '8cb9812149cd8579301ce2ca5057eff0';
+                    break;
+                case 1001:
+                    vRemid = '44606877da0120175b276fef46d53098';
+                    break;
+                case 1356:
+                    vRemid = '0567d71e18493993a98dd6c4b0ad5154';
+                    break;
+            }
+            
+            var _url = new Fbits.Framework.UrlUtils.Builder('https://secure.afilio.com.br/sale.php?pid=1509');
+            _url.set('order_id', vPedidoId);
+            _url.set('order_price', vValorTotal);
+            _url.set('remid', vRemid);
+            (function () {
+                var s = document.createElement('script');
+                var x = document.getElementsByTagName('script')[0];
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = _url.build();
+                x.parentNode.insertBefore(s, x);
+            })();
+        });
+    }
+</script>
+        });
+    }
+</script>	 
