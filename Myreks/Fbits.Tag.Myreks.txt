@@ -1,0 +1,18 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.Myreks" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 4
+5-Posição deixar como "Body - Última linha"
+6-Página colocar "Todas" ou conforme o tamplate da loja. 
+7-E no Identificador colocar "*"
+8-No campo conteúdo do script adicionar o script abaixo.
+
+<script type="text/javascript">
+    (function (doc) {
+        var scrp = doc.createElement('script');
+        scrp.setAttribute('async', 'true');
+        scrp.setAttribute('defer', 'true');
+        scrp.src = '//myreks.com/plugin/recommendit/widget/snippet.js';
+        doc.getElementsByTagName('head')[0].appendChild(scrp);
+    }(window.document));
+</script>
