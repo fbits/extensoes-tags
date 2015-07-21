@@ -1,0 +1,17 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.Afilio" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 3
+5-Posição deixar como "Body - Última linha"
+6-Página colocar todas. E no Identificador colocar "*"
+7-No campo conteúdo do script adicionar o script abaixo.
+
+
+<script id="xcntmyAsync" type="text/javascript">
+    if ((window.location.search.indexOf("utm=Afilio") > -1) ||
+		(window.location.search.indexOf("utm_source=Afilio") > -1) ||
+		(window.location.search.indexOf("source=Afilio") > -1)) {
+        
+        Fbits.Cookie.Set('ParceiroAtivo', 'Afilio', 15);        
+    }    
+</script>

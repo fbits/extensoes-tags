@@ -1,0 +1,19 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.Criteo.viewBusca" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 2
+5-Posição deixar como "Header - Última linha"
+6-Página colocar "Busca". E no Identificador colocar "*"
+7-No campo conteúdo do script adicionar o script abaixo.
+8-Substituir ACCOUNT com o codigo informado pelo parceiro
+
+ <script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
+    <script type="text/javascript">
+        window.criteo_q = window.criteo_q || [];
+        window.criteo_q.push(
+         { event: "setAccount", account: ACCOUNT },
+         { event: "setEmail", email: [""] },
+     { event: "setSiteType", type: "d" },
+     { event: "viewBusca" }
+    );
+    </script>

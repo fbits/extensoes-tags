@@ -1,0 +1,17 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.NeoAssist.viewAtendimento" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 12
+5-Posição deixar como "Body - Ultima linha"
+6-Página colocar "Todos". 
+7-E no Identificador colocar "*Atendimento*"
+8-No campo conteúdo do script adicionar o script abaixo.
+
+
+<script type="text/javascript">
+  function ajustaIFrame() {
+    $('#iFrameAtendimento').height = document.getElementById('iFrameAtendimento').height
+  }
+</script>
+
+<iframe id="iFrameAtendimento" frameBorder="0" src="http://megamamute.neoassist.com/?th=novo2" width="100%" height="1100" onload="ajustaIFrame()"></iframe>

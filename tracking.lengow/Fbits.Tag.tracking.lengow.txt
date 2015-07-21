@@ -1,0 +1,31 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.tracking.lengow" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 6
+5-Posição deixar como "Body - Ultima linha"
+6-Página colocar "Todas". 
+7-E no Identificador colocar "*ConfirmacaoPedido*"
+8-No campo conteúdo do script adicionar o script abaixo.
+9-verificar dados com o parceiro
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var vTotal = Fbits.Pedido.Total;
+        var vPedidoId = Fbits.Pedido.PedidoId;
+        var vFormaPagamentoID = Fbits.Pedido.FormaPagamentoID;
+
+        var myArrayProdutos = Fbits.Pedido.Produtos;
+        var vProdutosIds = '';
+        for (var i = 0, tot = myArrayProdutos.length; i < tot; i++) {
+            if (i > 0 && myArrayProdutos.Count > 1) {
+                vProdutosIds += ",";
+            }
+            vProdutosIds += Fbits.Pedido.Produtos[i].ProdutoId;
+        }
+
+        var img = document.createElement("img");
+        img.style.display = "inline";
+        img.src = 'https://tracking.lengow.com/lead.php?idClient=3773&idGroup=7059&price=' + vTotal + '&idCommande=' + vPedidoId + '&modePaiement=' + vFormaPagamentoID + '&listingProduit=' + vProdutosIds ;
+    });
+</script>

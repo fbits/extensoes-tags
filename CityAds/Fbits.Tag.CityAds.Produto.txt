@@ -1,0 +1,27 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.CityAds.viewProduto" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 1
+5-Posição deixar como "Body - Última linha"
+6-Página colocar todas. E no Identificador colocar "*/produto/*"
+7-No campo conteúdo do script adicionar o script abaixo.
+
+
+<script id="xcntmyAsync" type="text/javascript">
+	var parceiroAtivo =  Fbits.Cookie.Get('ParceiroAtivo');	
+	if (parceiroAtivo == 'CityAds'){	
+
+		  /*<![CDATA[*/
+		  // Página de Produto
+		  var xcnt_product_id = Fbits.Produto.ProdutoId; // Retornar o ID do produto
+		  /*]]>*/
+		  (function(){
+			var xscr = document.createElement( 'script' );
+			var xcntr = escape(document.referrer); xscr.async = true;
+			xscr.src = ( document.location.protocol === 'https:' ? 'https:' : 'http:' )
+			  + '//x.cnt.my/async/track/?r=' + Math.random();
+			  var x = document.getElementById( 'xcntmyAsync' );
+			x.parentNode.insertBefore( xscr, x );
+		  }());
+	}
+</script>

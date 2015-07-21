@@ -1,0 +1,27 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.GoogleRemarketing.viewFabricante" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 3
+5-Posição deixar como "Body - Ultima linha"
+6-Página colocar "Categoria". 
+7-E no Identificador colocar "/"
+8-No campo conteúdo do script adicionar o script abaixo.
+9-Verificar os parametros com o parceiro
+
+
+<script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 1047517255;
+    var google_conversion_language = "en";
+    var google_conversion_format = "3";
+    var google_conversion_color = "ffffff";
+    var google_conversion_label = "qb0RCP3N9gEQx7C_8wM";
+    var google_conversion_value = 0;
+    /* ]]> */
+  </script>
+  <script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion.js" async defer="defer"></script>
+  <noscript>
+    <div style="display: inline;">
+      <img height="1" width="1" style="border-style: none;" alt="" src="http://www.googleadservices.com/pagead/conversion/1047517255/?value=0&amp;label=qb0RCP3N9gEQx7C_8wM&amp;guid=ON&amp;script=0" />
+    </div>
+  </noscript>

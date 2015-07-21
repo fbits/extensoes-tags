@@ -1,0 +1,14 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.Veinteractive.viewConfirmacaoPedido" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 5
+5-Posição deixar como "Body - Última linha"
+6-Página colocar "Todas" ou conforme o tamplate da loja. 
+7-E no Identificador colocar "*ConfirmacaoPedido*"
+8-No campo conteúdo do script adicionar o script abaixo.
+9-ver parametros especificos fornecidos pela veinteractive
+
+<script type="text/javascript">
+	document.write("<img src='https://cdsusa.veinteractive.com/DataReceiverService.asmx/Pixel?journeycode=9F38F7DB-ACF4-40E3-9A68-F44A34394DEF' width='1' height='1' />");
+</script>
+<script src="//configusa.veinteractive.com/tags/9F38F7DB/ACF4/40E3/9A68/F44A34394DEF/tag.js" type="text/javascript" async></script>
