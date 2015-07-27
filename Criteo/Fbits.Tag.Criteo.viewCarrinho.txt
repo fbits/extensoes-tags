@@ -3,7 +3,7 @@
 3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
 4-Deixar ativo e prioridade 2
 5-Posição deixar como "Header - Última linha"
-6-Página colocar "Todas". E no Identificador colocar "*"
+6-Página colocar "Todas". E no Identificador colocar "*Carrinho*"
 7-No campo conteúdo do script adicionar o script abaixo.
 8-Substituir ACCOUNT com o codigo informado pelo parceiro
 

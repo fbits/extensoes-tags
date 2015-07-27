@@ -7,10 +7,9 @@
 7-E no Identificador colocar "*ConfirmacaoPedido*"
 8-No campo conteúdo do script adicionar o script abaixo.
 
-
 <Script>
     var _url = new Fbits.Framework.UrlUtils.Builder('//tags.mediaforge.com/js/1255/');
-    _url.set('orderNumber', Fbits.Produto.ProdutoId);
+    _url.set('orderNumber', Fbits.Pedido.PedidoId);
     var vSubTotal = Fbits.Pedido.Total - Fbits.Pedido.Frete;
     _url.set('price', vSubTotal);
     
