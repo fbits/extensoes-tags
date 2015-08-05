@@ -8,12 +8,14 @@
 8-Substituir TEMPO com o a validade em dias para expirar o cookie
 
 <script id="xcntmyAsync" type="text/javascript">
-    if ((window.location.search.indexOf("utm=CityAds") > -1) ||
-		(window.location.search.indexOf("utm_source=CityAds") > -1) ||
-		(window.location.search.indexOf("source=CityAds") > -1)) {
+    var urlCompleta = window.location.search;
+    var url = urlCompleta.toLowerCase(); /*minusculo*/
+
+    if ((url.indexOf("utm=cityads") > -1) ||    
+    (url.indexOf("source=cityads") > -1)) {
 
         var prxID = queryString("prx");
-        var clickID = queryString("click_id");        
+        var clickID = queryString("click_id");
 
         Fbits.Cookie.Set('ParceiroAtivo', 'CityAds', 30);
         Fbits.Cookie.Set('prx', prxID, 30);

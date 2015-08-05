@@ -8,10 +8,11 @@
 8-ver parametros especificos fornecidos pela veinteractive
 
 <script id="xcntmyAsync" type="text/javascript">    
-	if((window.location.search.indexOf("utm=Zanox") > -1) ||
-		(window.location.search.indexOf("utm_source=Zanox") > -1) ||
-		(window.location.search.indexOf("source=Zanox") > -1))
-    {   	
+    var urlCompleta = window.location.search;
+    var url = urlCompleta.toLowerCase(); /*minusculo*/
+
+    if ((url.indexOf("utm=zanox") > -1) ||    
+    (url.indexOf("source=zanox") > -1)) {   	
         Fbits.Cookie.Set('parceiroAtivo', 'Zanox', 30);		
     }
 	

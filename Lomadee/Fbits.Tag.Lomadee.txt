@@ -9,26 +9,25 @@
 9-Substituir TEMPO com o a validade em dias para expirar o cookie
 
 <Script>
-if((window.location.search.indexOf("utm=Lomadee") > -1) ||
-	(window.location.search.indexOf("utm_source=Lomadee") > -1) ||
-	(window.location.search.indexOf("source=Lomadee") > -1))
-{   
-	Fbits.Cookie.Set('parceiroAtivo', 'Lomadee', TEMPO);
+    var urlCompleta = window.location.search;
+    var url = urlCompleta.toLowerCase(); /*minusculo*/
 
-	}
-	
-	var parceiroAtivo =  Fbits.Cookie.Get('ParceiroAtivo');	
-	if (parceiroAtivo == 'Lomadee'){
+    if ((url.indexOf("utm=lomadee") > -1) ||    
+    (url.indexOf("source=lomadee") > -1)) {
+        Fbits.Cookie.Set('ParceiroAtivo', 'Lomadee', 30);
+    }
 
-
-	//Lomadee otimização
-	try{var oppuzJSProtocol = (("https:" == document.location.protocol) ? "https://" : "http://"); 
-		var head= document.getElementsByTagName('head')[0]; 
-		var script= document.createElement('script'); 
-		script.type= 'text/javascript'; 
-		script.src= oppuzJSProtocol + "www.oppuz.com/script/lmd/ADVERTISERID.js"; 
-		script.async = true; 
-		head.appendChild(script); } catch (e) {}
-	}
-}
+    var parceiroAtivo = Fbits.Cookie.Get('ParceiroAtivo');
+    if (parceiroAtivo == 'Lomadee') {
+        //Lomadee otimização
+        try {
+            var oppuzJSProtocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+            var head = document.getElementsByTagName('head')[0];
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = oppuzJSProtocol + "www.oppuz.com/script/lmd/5800.js";
+            script.async = true;
+            head.appendChild(script);
+        } catch (e) { }
+    }
 </Script>
