@@ -9,26 +9,55 @@
 <script type="text/javascript">
     var parceiroAtivo = Fbits.Cookie.Get('ParceiroAtivo');
     if (parceiroAtivo == 'Afilio') {
-        $(document).ready(function () {            
-            var vPedidoId = Fbits.Pedido.PedidoId;            
+        $(document).ready(function () {
+            var vPedidoId = Fbits.Pedido.PedidoId;
             var vValorTotal = Fbits.Pedido.Total;
             var vValorFrete = Fbits.Pedido.Frete;
-            var vValorDebitoCC = '0';
-            var vRemid = ''; 
+            var vValorDebitoCC = Fbits.Pedido.ValorDebitoContaCorrente;
+            var vRemid = '';
             var vCategoriaTotal = 0;
             var vDiff_Afilio = 0;
             var vPrecoVenda = 0;
             var vQuantidade = 0;
             var vCategoriaPai = 0;
-            var myArrayProdutos = Fbits.Pedido.Produtos;            
-            for (var i = 0, tot = myArrayProdutos.length; i < tot; i++) {                
-                vPrecoVenda += Fbits.Pedido.Produtos[i].Valor;    
-                vQuantidade += Fbits.Pedido.Produtos[i].Quantidade;
-                vCategoriaPai += Fbits.Pedido.Produtos[i].CategoriaPai;
+            var vValorSubTotal = vValorTotal - vValorFrete + Fbits.Pedido.Desconto + vValorDebitoCC;
 
-                vDiff_Afilio = vPrecoVenda * vQuantidade;
-                vDiff_Afilio = 100 - ((vValorTotal - vValorFrete + vValorDebitoCC) * 100) / vDiff_Afilio;
-                vValorTotal = vValorTotal - (vPrecoVenda * vDiff_Afilio / 100);
+            var myArrayProdutos = Fbits.Pedido.Produtos;
+            myArrayProdutos = myArrayProdutos.sort();
+
+            var myArrayAgrupado = [];
+            myArrayProdutos.filter(function (k) {
+                var vRepetido = false;
+                var j;
+                for (j = 0; j < myArrayAgrupado.length; j++) {
+                    if (myArrayAgrupado[j].CategoriaNivel1 === k.CategoriaNivel1) {
+                        vRepetido = true;
+                        break;
+                    }
+                }
+                if (vRepetido) {
+                    myArrayAgrupado[j].Quantidade = k.Quantidade;
+                    myArrayAgrupado[j].Valor += k.Valor;
+                } else {
+                    myArrayAgrupado.push(k);
+                }
+            });
+
+            //for (var af = 0, afTot = myArrayProdutos.length; af < afTot; af++) {
+            //    vPrecoVenda += Fbits.Pedido.Produtos[af].Valor;
+            //    vQuantidade += Fbits.Pedido.Produtos[af].Quantidade;
+            //}
+
+            //vDiff_Afilio = vPrecoVenda * vQuantidade;
+            //vDiff_Afilio = 100 - ((vValorTotal - vValorFrete + vValorDebitoCC) * 100) / vDiff_Afilio;
+            //vValorTotal = vValorTotal - (vValorTotal * vDiff_Afilio / 100);
+
+            for (var i = 0, tot = myArrayAgrupado.length; i < tot; i++) {
+
+                vDiff_Afilio = (myArrayAgrupado[i].Valor * 100) / vValorSubTotal;
+                vValorTotal = vValorSubTotal - (vValorSubTotal * vDiff_Afilio / 100);
+
+                vCategoriaPai = myArrayAgrupado[i].CategoriaNivel1;
 
                 switch (vCategoriaPai) {
                     case 896:
@@ -56,20 +85,21 @@
                         vRemid = '0567d71e18493993a98dd6c4b0ad5154';
                         break;
                 }
-            }
 
-            var _url = new Fbits.Framework.UrlUtils.Builder('https://secure.afilio.com.br/sale.php?pid=1509');
-            _url.set('order_id', vPedidoId);
-            _url.set('order_price', vValorTotal);
-            _url.set('remid', vRemid);
-            (function () {
-                var s = document.createElement('script');
-                var x = document.getElementsByTagName('script')[0];
-                s.type = 'text/javascript';
-                s.async = true;
-                s.src = _url.build();
-                x.parentNode.insertBefore(s, x);
-            })();
+                var _url = new Fbits.Framework.UrlUtils.Builder('https://secure.afilio.com.br/sale.php');
+                _url.set('pid', '1509');
+                _url.set('order_id', vPedidoId);
+                _url.set('order_price', vValorTotal);
+                _url.set('remid', vRemid);
+                (function () {
+                    var s = document.createElement('script');
+                    var x = document.getElementsByTagName('script')[0];
+                    s.type = 'text/javascript';
+                    s.async = true;
+                    s.src = _url.build();
+                    x.parentNode.insertBefore(s, x);
+                })();
+            }
         });
     }
 </script>	 

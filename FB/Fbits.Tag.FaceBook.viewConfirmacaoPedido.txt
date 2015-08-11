@@ -1,0 +1,24 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.FaceBook.viewConfirmacaoPedido" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 8
+5-Posição deixar como "Header - Primeira linha"
+6-Página colocar "Todas". E no Identificador colocar "*ConfirmacaoPedido*"
+7-No campo conteúdo do script adicionar o script abaixo.
+8-Substituir OFK com o codigo informado pelo parceiro
+
+<!-- Facebook Conversion Code for Conclusões de compra - Megamamute -->
+<script>(function () {
+        var _fbq = window._fbq || (window._fbq = []);
+        if (!_fbq.loaded) {
+            var fbds = document.createElement('script');
+            fbds.async = true;
+            fbds.src = '//connect.facebook.net/en_US/fbds.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(fbds, s);
+            _fbq.loaded = true;
+        }
+    })();
+    window._fbq = window._fbq || [];
+    window._fbq.push(['track', '6036023933386', { 'value': '' + Fbits.Pedido.Total + '', 'currency': 'BRL' }]);
+</script>
