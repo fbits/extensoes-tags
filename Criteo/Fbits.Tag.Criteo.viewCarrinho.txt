@@ -7,13 +7,35 @@
 7-No campo conteúdo do script adicionar o script abaixo.
 8-Substituir ACCOUNT com o codigo informado pelo parceiro
 
-<script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
-<script type="text/javascript">
-        window.criteo_q = window.criteo_q || []; window.criteo_q.push(
-          { event: "setAccount", account: "ACCOUNT" },
-          { event: "setCustomerId", id: "0"},
-          {event: "setEmail", email: [Fbits.Usuario.Email]},
-          {event: "setSiteType", type: "d" },
-         {event: "viewBasket", item: [Fbits.Carrinho.Produtos }
-      );
-</script>
+	<script type="text/javascript">
+	    var parceiroAtivo = Fbits.Cookie.Get("ParceiroAtivo").toLowerCase();
+	    if (parceiroAtivo == 'criteo') {
+	        (function () {
+	            var xscr = document.createElement('script');
+	            xscr.async = true;
+	            xscr.src = '//static.criteo.net/js/ld/ld.js';
+	            var x = document.getElementById('criteo');
+	            x.parentNode.insertBefore(xscr, x);
+	        }());
+	        var product_id = '';
+	        var product_price = '';
+	        var product_qty = '';
+	        var str_item = '';
+	        var str_basket_list = ''
+	        for (var i = 0; i < Fbits.Carrinho.Produtos.length; i++) {
+	            product_id = Fbits.Carrinho.Produtos[i].ProdutoId;
+	            product_price = Fbits.Carrinho.Produtos[i].Valor;
+	            product_qty = Fbits.Carrinho.Produtos[i].Quantidade;
+
+	            str_item = "id:" + product_id + ",price:" + product_price + ",quantity:" + product_qty;
+	            str_basket_list += "{" + str_item + "},";
+	        }
+	        window.criteo_q = window.criteo_q || [];
+	        window.criteo_q.push(
+                { event: "setAccount", account: 4160 },
+                { event: "setSiteType", type: "d" },
+                { event: "setEmail", email: Fbits.Usuario.Email },
+                { event: "viewBasket", item: [str_basket_list] }
+            );
+	    }
+	</script>

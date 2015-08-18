@@ -8,13 +8,27 @@
 8-Substituir ACCOUNT com o codigo informado pelo parceiro
 
 
- <script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
-    <script type="text/javascript">
-        window.criteo_q = window.criteo_q || [];
-        window.criteo_q.push(
-         { event: "setAccount", account: ACCOUNT },
-         { event: "setEmail", email: [""] },
-     { event: "setSiteType", type: "d" },
-     { event: "viewCategoria" }
-    );
-    </script>
+	<script type="text/javascript">
+	    var parceiroAtivo = Fbits.Cookie.Get("ParceiroAtivo").toLowerCase();
+	    if (parceiroAtivo == 'criteo') {
+	        (function () {
+	            var xscr = document.createElement('script');
+	            xscr.async = true;
+	            xscr.src = '//static.criteo.net/js/ld/ld.js';
+	            var x = document.getElementById('criteo');
+	            x.parentNode.insertBefore(xscr, x);
+	        }());
+	        var listaProdutoId = [];
+	        for (i = 0; i < Fbits.ListaProdutos.Produtos.length; i++) {
+	            listaProdutoId.push(Fbits.ListaProdutos.Produtos[i].ProdutoId);
+	        }
+	        listaProdutoId = listaProdutoId.join(",");
+	        window.criteo_q = window.criteo_q || [];
+	        window.criteo_q.push(
+                { event: "setAccount", account: 4160 },
+                { event: "setSiteType", type: "d" },
+                { event: "setEmail", email: Fbits.Usuario.Email},
+                { event: "viewList", item: [listaProdutoId] }
+            );
+	    }
+	</script>

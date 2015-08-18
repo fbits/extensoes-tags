@@ -12,7 +12,6 @@ EventID = indica o ID do evento comissionamento na Lomadee
 Valor = valor total dos itens comprados
 
 
-
 <Script>
     var parceiroAtivo = Fbits.Cookie.Get('ParceiroAtivo');
     if (parceiroAtivo == 'Lomadee') {
@@ -55,12 +54,11 @@ Valor = valor total dos itens comprados
         _url.set('value1', Valor);
 
         (function () {
-            var s = document.createElement('script');
-            var x = document.getElementsByTagName('script')[0];
-            s.type = 'text/javascript';
+            var s = document.createElement("img");
+            s.style.display = "inline";
             s.async = true;
             s.src = _url.build();
-            x.parentNode.insertBefore(s, x);
+            document.body.appendChild(s);
         })();
     }
 </Script>

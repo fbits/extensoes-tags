@@ -7,13 +7,22 @@
 7-No campo conteúdo do script adicionar o script abaixo.
 8-Substituir ACCOUNT com o codigo informado pelo parceiro
 
-  <script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
     <script type="text/javascript">
-        window.criteo_q = window.criteo_q || [];
-        window.criteo_q.push(
-         { event: "setAccount", account: ACCOUNT },
-         { event: "setEmail", email: [""] },
-     { event: "setSiteType", type: "d" },
-     { event: "viewHome" }
-    );
+        var parceiroAtivo = Fbits.Cookie.Get("ParceiroAtivo").toLowerCase();
+        if (parceiroAtivo == 'criteo') {
+            (function () {
+                var xscr = document.createElement('script');
+                xscr.async = true;
+                xscr.src = '//static.criteo.net/js/ld/ld.js';
+                var x = document.getElementById('criteo');
+                x.parentNode.insertBefore(xscr, x);
+            }());
+            window.criteo_q = window.criteo_q || [];
+            window.criteo_q.push(
+                { event: "setAccount", account: 4160 },
+                { event: "setEmail", email: [""] },
+                { event: "setSiteType", type: "d" },
+                { event: "viewHome" }
+            );
+        }
     </script>

@@ -8,7 +8,8 @@
 8-Substituir OFK com o codigo informado pelo parceiro
 
 <!-- Facebook Conversion Code for Conclusões de compra - Megamamute -->
-<script>(function () {
+<script>
+    (function () {
         var _fbq = window._fbq || (window._fbq = []);
         if (!_fbq.loaded) {
             var fbds = document.createElement('script');
@@ -20,5 +21,18 @@
         }
     })();
     window._fbq = window._fbq || [];
-    window._fbq.push(['track', '6036023933386', { 'value': '' + Fbits.Pedido.Total + '', 'currency': 'BRL' }]);
+    window._fbq.push(['track', '6037488977186', { 'value': Fbits.Pedido.Total, 'currency': 'BRL' }]);
+
+    var _url = new Fbits.Framework.UrlUtils.Builder('www.facebook.com/tr');
+    _url.set('ev', '6037488977186');
+    _url.set('cd[value]', Fbits.Pedido.Total);
+    _url.set('cd[currency]', 'BRL');
+    (function () {
+        var s = document.createElement('script');
+        var x = document.getElementsByTagName('script')[0];
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = _url.build();
+        x.parentNode.insertBefore(s, x);
+    })();
 </script>
