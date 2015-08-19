@@ -8,26 +8,26 @@
 8-No campo conteúdo do script adicionar o script abaixo.
 
 <Script>
-    var myArrayProdutos = Fbits.Carrinho.Produtos;
-    var vProdutosIds = '';
-    for (var i = 0, tot = myArrayProdutos.length; i < tot; i++) {
-        if (i > 0 && myArrayProdutos.Count > 1) {
+    var vProdutosIds = "";
+    var vContador = 0;
+    for (var index in Fbits.Carrinho.ProdutoVariante) {
+        if (vContador > 0) {
             vProdutosIds += ",";
         }
-        vProdutosIds += Fbits.Carrinho.Produtos[i].ProdutoId;
+        vProdutosIds += Fbits.Carrinho.ProdutoVariante[index].ProdutoId;
+        vContador++;
     }
 
     var _url = new Fbits.Framework.UrlUtils.Builder('//tags.mediaforge.com/js/1255/');
     _url.set('cart', Fbits.Carrinho.Total);
     _url.set('prodID', vProdutosIds);
-        
+
     (function () {
         var s = document.createElement('script');
+        var x = document.getElementsByTagName('script')[0];
         s.type = 'text/javascript';
-        s.async = s.defer = true;
+        s.async = true;
         s.src = _url.build();
-        var p = document.getElementsByTagName('body')[0] ||
-        document.getElementsByTagName('head')[0];
-        if (p) p.appendChild(s);
+        x.parentNode.insertBefore(s, x);
     })();
 </Script>

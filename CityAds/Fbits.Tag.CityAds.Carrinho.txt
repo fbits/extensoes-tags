@@ -8,33 +8,34 @@
 
 
 <script id="xcntmyAsync" type="text/javascript">
-	var parceiroAtivo =  Fbits.Cookie.Get('ParceiroAtivo');	
-	if (parceiroAtivo == 'CityAds'){	
-		var myArrayProdutos = Fbits.Carrinho.Produtos;
-		var itens = 0;
-		var quantidades = 0;
-		for (var i = 0, tot = myArrayProdutos.length; i < tot; i++) {
-		  if (i > 0 && myArrayProdutos.Count > 1) {
-			  itens += ",";
-			  quantidades += ",";
-		  }
+    var parceiroAtivo =  Fbits.Cookie.Get('ParceiroAtivo');	
+    if (parceiroAtivo == 'CityAds') {
+        var myArrayProdutos = Fbits.Carrinho.Produtos;
+        var itens = 0;
+        var quantidades = 0;
+        var vContador = 0;
+        for (var index in Fbits.Carrinho.ProdutoVariante) {
+            if (vContador > 0) {
+                vProdutosIds += ",";
+                itens += ",";
+                quantidades += ",";
+            }
+            vProdutosIds += Fbits.Carrinho.ProdutoVariante[index].ProdutoId;
+            vContador = vContador + 1;
 
-		  itens += Fbits.Carrinho.Produtos[i].ProdutoId.ToString();
-		  quantidades += item.Quantidade.ToString();
-		}
-
-		/*<![CDATA[*/
-		// Página Basket
-		  var xcnt_basket_products = itens; // Retornar os IDs dos produtos, separados por vírgula
-		  var xcnt_basket_quantity = quantidades; // Retornar a quantidade de cada produto no Basket, separados por vírgula
-		/*]]>*/
-		(function () {
-		  var xscr = document.createElement('script');
-		  var xcntr = escape(document.referrer); xscr.async = true;
-		  xscr.src = (document.location.protocol === 'https:' ? 'https:' : 'http:')
-			+ '//x.cnt.my/async/track/?r=' + Math.random();
-		  var x = document.getElementById('xcntmyAsync');
-		  x.parentNode.insertBefore(xscr, x);
-		}());
-	}
+            /*<![CDATA[*/
+            // Página Basket
+            var xcnt_basket_products = itens; // Retornar os IDs dos produtos, separados por vírgula
+            var xcnt_basket_quantity = quantidades; // Retornar a quantidade de cada produto no Basket, separados por vírgula
+            /*]]>*/
+            (function () {
+                var xscr = document.createElement('script');
+                var xcntr = escape(document.referrer); xscr.async = true;
+                xscr.src = (document.location.protocol === 'https:' ? 'https:' : 'http:')
+                  + '//x.cnt.my/async/track/?r=' + Math.random();
+                var x = document.getElementById('xcntmyAsync');
+                x.parentNode.insertBefore(xscr, x);
+            }());
+        }
+    }
 </script>

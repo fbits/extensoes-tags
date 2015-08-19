@@ -7,6 +7,7 @@
 7-No campo conteúdo do script adicionar o script abaixo.
 8-Substituir ACCOUNT com o codigo informado pelo parceiro
 
+
 	<script type="text/javascript">
 	    var parceiroAtivo = Fbits.Cookie.Get("ParceiroAtivo").toLowerCase();
 	    if (parceiroAtivo == 'criteo') {
@@ -22,13 +23,21 @@
 	        var product_qty = '';
 	        var str_item = '';
 	        var str_basket_list = ''
-	        for (var i = 0; i < Fbits.Carrinho.Produtos.length; i++) {
-	            product_id = Fbits.Carrinho.Produtos[i].ProdutoId;
-	            product_price = Fbits.Carrinho.Produtos[i].Valor;
-	            product_qty = Fbits.Carrinho.Produtos[i].Quantidade;
+	        
+	        var vContador = 0;
+	        for (var index in Fbits.Carrinho.ProdutoVariante) {
+	            if (vContador > 0) {	             
+	                itens += ",";
+	                quantidades += ",";
+	            }	            
+	            product_id = Fbits.Carrinho.ProdutoVariante[index].ProdutoId;
+	            product_price = Fbits.Carrinho.ProdutoVariante[index].Valor;
+	            product_qty = Fbits.Carrinho.ProdutoVariante[index].Quantidade;
 
 	            str_item = "id:" + product_id + ",price:" + product_price + ",quantity:" + product_qty;
 	            str_basket_list += "{" + str_item + "},";
+
+	            vContador = vContador + 1;
 	        }
 	        window.criteo_q = window.criteo_q || [];
 	        window.criteo_q.push(
