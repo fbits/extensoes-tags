@@ -11,13 +11,18 @@
 	<script type="text/javascript">
 	    var parceiroAtivo = Fbits.Cookie.Get("ParceiroAtivo").toLowerCase();
 	    if (parceiroAtivo == 'criteo') {
+
+	        var vDominio = "//static.criteo.net/js/ld/ld.js";
+	        var _url = new Fbits.Framework.UrlUtils.Builder(vDominio);
 	        (function () {
-	            var xscr = document.createElement('script');
-	            xscr.async = true;
-	            xscr.src = '//static.criteo.net/js/ld/ld.js';
-	            var x = document.getElementById('criteo');
-	            x.parentNode.insertBefore(xscr, x);
-	        }());
+	            var s = document.createElement('script');
+	            var x = document.getElementsByTagName('script')[0];
+	            s.type = 'text/javascript';
+	            s.async = true;
+	            s.src = _url.build();
+	            x.parentNode.insertBefore(s, x);
+	        })();
+
 	        var product_id = '';
 	        var product_price = '';
 	        var product_qty = '';

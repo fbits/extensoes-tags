@@ -35,4 +35,18 @@
         s.src = _url.build();
         x.parentNode.insertBefore(s, x);
     })();
+
+    var _url = new Fbits.Framework.UrlUtils.Builder('www.facebook.com/tr');
+    _url.set('ev', '6037488977186');
+    _url.set('cd[value]', Fbits.Pedido.Total);
+    _url.set('cd[currency]', 'BRL');
+    _url.set('noscript', '1');
+    (function () {
+        var s = document.createElement('noscript');
+        var x = document.getElementsByTagName('noscript')[0];
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = _url.build();
+        x.parentNode.insertBefore(s, x);
+    })();
 </script>
