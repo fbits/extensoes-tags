@@ -1,0 +1,22 @@
+<script>
+var Fbits = Fbits || {};
+Fbits.ValidacaoEndereco = Fbits.ValidacaoEndereco || {};
+
+Fbits.ValidacaoEndereco = {
+	validarTexto: function(id){
+		var regex = /["'`°ºª()/]/g;
+		$(id).val($(id).val().replace(regex, ""));
+	},
+
+	validar: function(id){
+		$('body').on('input', id, function() {Fbits.ValidacaoEndereco.validarTexto(id)});
+	}
+}
+
+Fbits.ValidacaoEndereco.validar("#txtEndereco");
+Fbits.ValidacaoEndereco.validar("#enderecoInfo_Numero");
+Fbits.ValidacaoEndereco.validar("#txtNumero");
+Fbits.ValidacaoEndereco.validar("#enderecoInfo_Complemento");
+Fbits.ValidacaoEndereco.validar("#txtComplemento");
+Fbits.ValidacaoEndereco.validar("#txtBairro");
+</script>
