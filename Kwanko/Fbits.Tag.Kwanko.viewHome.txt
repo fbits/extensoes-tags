@@ -1,0 +1,26 @@
+1-Ter acessar ao gerenciador de scripts do Admin Fstore
+2-Adicionar nova TAG, com o  nome "Fbits.Tag.Kwanko.viewHome" 
+3-Determinar os prazos de exibição, caso fique sempre deixar os campos em branco. 
+4-Deixar ativo e prioridade 1
+5-Posição deixar como "Body - Última linha"
+6-Página colocar Home
+7-No campo conteúdo do script adicionar o script abaixo.
+
+<script type="text/javascript" src="//img.metaffiliation.com/u/8/p52857.js"></script>
+<script type="text/javascript">
+var siteType = 'd';
+if(window.navigator.userAgent.match(/Mobile|iPhone|iPod|IEMobile|Windows Phone|Android|BlackBerry|webOS/i)) {
+    siteType = 'm';
+  }
+  else if(window.navigator.userAgent.match(/Tablet|iPad|Nexus 7|Nexus 10|KFAPWI/i)) {
+    siteType = 't';
+  }
+  else{
+	siteType = 'd';
+  }
+window.ptag_params = {
+zone: "homepage",
+customerId: (Fbits.Usuario.UsuarioId>0? Fbits.Usuario.UsuarioId.toString() : '') ,
+siteType: siteType
+};
+</script>
